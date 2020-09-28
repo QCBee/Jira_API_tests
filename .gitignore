@@ -1,0 +1,5 @@
+# Project exclude paths
+/target/
+/.idea/
+/allure-results/
+/Jira_API_tests.iml
