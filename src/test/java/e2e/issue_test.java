@@ -2,6 +2,7 @@ package e2e;
 
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.json.simple.JSONObject;
 import org.testng.annotations.Test;
 import static io.restassured.RestAssured.given;
 import static org.testng.Assert.assertEquals;
@@ -13,27 +14,38 @@ public class issue_test {
     private String postCreateIssueRequest = "https://jira.hillel.it/rest/api/2/issue";
     private String getJustCreatedIssuePartialRequest = "http://jira.hillel.it/rest/api/2/issue/";
 
+    //Test data for create issue test
+    private String summaryValue = "Test task via API";
+    private String idIssueValue = "10105";
+    private String issueTypeValue = "Task";
+    private String projectIdValue = "10508";
+    private String reporterValue = "webinar5";
+
     @Test
     public void createNewIssue(){
+        //JSON Object for Create New Issue
+        JSONObject newIssue = new JSONObject();
+        JSONObject fields = new JSONObject();
+        JSONObject issueType = new JSONObject();
+        JSONObject project = new JSONObject();
+        JSONObject reporter = new JSONObject();
+
+        fields.put("summary", summaryValue);
+        fields.put("issuetype", issueType);
+        fields.put("project", project);
+        fields.put("reporter", reporter);
+        issueType.put("id",idIssueValue);
+        issueType.put("name", issueTypeValue);
+        project.put("id",projectIdValue);
+        reporter.put("name", reporterValue);
+        newIssue.put("fields", fields);
+
+
         Response postCreateIssueResponse =
                 given().
                         auth().preemptive().basic(userNameAuth,userPassAuth).
                         contentType(ContentType.JSON).
-                        body("{\n" +
-                                "   \"fields\":{\n" +
-                                "      \"summary\":\"Test task via API\",\n" +
-                                "      \"issuetype\":{\n" +
-                                "         \"id\":\"10105\",\n" +
-                                "         \"name\":\"Task\"\n" +
-                                "      },\n" +
-                                "      \"project\":{\n" +
-                                "         \"id\":\"10508\"\n" +
-                                "      },\n" +
-                                "   \"reporter\": {\n" +
-                                "      \"name\": \"webinar5\"\n" +
-                                "    }\n" +
-                                "   }\n" +
-                                "}\u2029").
+                        body(newIssue.toString()).
                         when().
                         post(postCreateIssueRequest).
                         then().
