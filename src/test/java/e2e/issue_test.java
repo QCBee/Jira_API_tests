@@ -40,7 +40,6 @@ public class issue_test {
         reporter.put("name", reporterValue);
         newIssue.put("fields", fields);
 
-
         Response postCreateIssueResponse =
                 given().
                         auth().preemptive().basic(userNameAuth,userPassAuth).
