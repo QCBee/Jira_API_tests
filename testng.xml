@@ -8,7 +8,7 @@
             </run>
         </groups>
         <classes>
-            <class name="e2e.issue_test"/>
+            <class name="e2e.CreateIssueTest"/>
         </classes>
     </test>
 </suite>

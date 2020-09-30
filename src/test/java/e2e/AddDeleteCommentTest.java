@@ -9,7 +9,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.lessThan;
 import static org.testng.Assert.assertEquals;
 
-public class comment_test {
+public class AddDeleteCommentTest {
     //Test data
     private String userNameAuth = "webinar5";
     private String userPassAuth = "webinar5";

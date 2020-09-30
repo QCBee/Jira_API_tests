@@ -7,10 +7,9 @@ import org.testng.annotations.Test;
 import static io.restassured.RestAssured.given;
 import static org.testng.Assert.assertEquals;
 
-public class issue_test {
+public class CreateIssueTest {
     private String userNameAuth = "webinar5";
     private String userPassAuth = "webinar5";
-    private String getExistingIssueRequest = "http://jira.hillel.it/rest/api/2/issue/WEBINAR-12303";
     private String postCreateIssueRequest = "https://jira.hillel.it/rest/api/2/issue";
     private String getJustCreatedIssuePartialRequest = "http://jira.hillel.it/rest/api/2/issue/";
 
@@ -75,16 +74,5 @@ public class issue_test {
         assertEquals(userNameAuth, getJustCreatedIssueResponse.path("fields.reporter.name"));
     }
 
-    @Test
-    public void getExistingIssue(){
-        Response getExistingIssueResponse =
-            given().
-                    auth().preemptive().basic(userNameAuth,userPassAuth).
-                    when().
-                    get(getExistingIssueRequest).
-                    then().
-                    extract().response();
-        assertEquals(getExistingIssueResponse.statusCode(),200);
-        assertEquals("WEBINAR-12303", getExistingIssueResponse.path("key"));
-    }
+
 }
