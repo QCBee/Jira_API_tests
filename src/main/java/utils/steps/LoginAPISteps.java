@@ -2,6 +2,8 @@ package utils.steps;
 
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import utils.APIPathes;
+import utils.Credentials;
 import utils.JiraJSONObjects;
 
 import static io.restassured.RestAssured.given;
@@ -13,10 +15,11 @@ public class LoginAPISteps {
     public static Response successfulLogin(){
         Response response =
                 given().
+                        auth().preemptive().basic(Credentials.userName,Credentials.userPass).
                         contentType(ContentType.JSON).
                         body(successfulLoginJSON).
                         when().
-                        post("https://jira.hillel.it/rest/auth/1/session/").
+                        post(APIPathes.loginUrl).
                         then().
                         extract().response();
         return response;
