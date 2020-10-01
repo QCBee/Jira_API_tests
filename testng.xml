@@ -1,14 +1,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="JIRA Suite" parallel="false">
-    <test name="Issue">
-        <groups>
-            <run>
-                <include name="Regression"/>
-<!--                <exclude name="SKIP"/>-->
-            </run>
-        </groups>
+<suite name="JIRA Regression e2e suite" parallel="classes" thread-count="3">
+    <test name="e2e tests scope">
         <classes>
-            <class name="e2e.issue_test"/>
+            <class name="e2e.IssueTest"/>
+            <class name="e2e.CommentTest"/>
+            <class name="e2e.LoginTest"/>
         </classes>
     </test>
 </suite>
