@@ -1,7 +1,9 @@
-package utils;
+package utils.steps;
 
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import utils.JiraJSONObjects;
+
 import static io.restassured.RestAssured.given;
 
 public class LoginAPISteps {
