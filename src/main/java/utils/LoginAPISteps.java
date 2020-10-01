@@ -2,10 +2,6 @@ package utils;
 
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import org.json.simple.JSONObject;
-import utils.Credentials;
-import utils.JiraJSONObjects;
-
 import static io.restassured.RestAssured.given;
 
 public class LoginAPISteps {
