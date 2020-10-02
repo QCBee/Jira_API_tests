@@ -1,0 +1,8 @@
+baseUrl: https://jira.hillel.it/secure/Dashboard.jspa
+author: Franc
+database:
+  driver: com.mysql.jdbc.Driver
+  port: 3306
+  dbname: mydb
+  username: root
+  password: 1111
